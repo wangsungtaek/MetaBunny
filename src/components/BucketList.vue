@@ -14,7 +14,7 @@ export default {};
             class="section-subtitle text-muted text-center padding-t-30 font-secondary"
           >메타 버니 홀더들과 버킷리스트를 함께 진행해 보세요.<br>
           여러분의 버킷리스트를 공유해 주세요.<br>
-          330 FIVE는 홀더들의 성장을 도모합니다.</p>
+          메타 버니 프로젝트 팀은 홀더들의 성장을 도모합니다.</p>
           
         </div>
       </div>
@@ -23,54 +23,42 @@ export default {};
           <div class="services-box text-center hover-effect">
             <img src="@/assets/images/surfing.png" class="bunny">
             <h4 class="padding-t-15">서핑</h4>
-            <p
-              class="padding-t-15 text-muted"
-            >서핑 소모임</p>
+            <!-- <p class="padding-t-15 text-muted">서핑 소모임</p> -->
           </div>
         </div>
         <div class="col-lg-4 margin-t-20">
           <div class="services-box text-center hover-effect">
             <img src="@/assets/images/camping.png" class="bunny">
             <h4 class="padding-t-15">캠핑</h4>
-            <p
-              class="padding-t-15 text-muted"
-            >서핑 소모임</p>
+            <!-- <p class="padding-t-15 text-muted">서핑 소모임</p> -->
           </div>
         </div>
         <div class="col-lg-4 margin-t-20">
           <div class="services-box text-center hover-effect">
             <img src="@/assets/images/fishing.png" class="bunny">
             <h4 class="padding-t-15">낚시</h4>
-            <p
-              class="padding-t-15 text-muted"
-            >서핑 소모임</p>
+            <!-- <p class="padding-t-15 text-muted">서핑 소모임</p> -->
           </div>
         </div>
         <div class="col-lg-4 margin-t-20">
           <div class="services-box text-center hover-effect">
-            <img src="@/assets/images/bunny/2.png" class="bunny">
-            <h4 class="padding-t-15">서핑</h4>
-            <p
-              class="padding-t-15 text-muted"
-            >서핑 소모임</p>
+            <img src="@/assets/images/hidden.png" class="bunny">
+            <h4 class="padding-t-15">함께 만들기</h4>
+            <!-- <p class="padding-t-15 text-muted">서핑 소모임</p> -->
           </div>
         </div>
         <div class="col-lg-4 margin-t-20">
           <div class="services-box text-center hover-effect">
-            <img src="@/assets/images/bunny/2.png" class="bunny">
-            <h4 class="padding-t-15">서핑</h4>
-            <p
-              class="padding-t-15 text-muted"
-            >서핑 소모임</p>
+            <img src="@/assets/images/hidden.png" class="bunny">
+            <h4 class="padding-t-15">함께 만들기</h4>
+            <!-- <p class="padding-t-15 text-muted">서핑 소모임</p> -->
           </div>
         </div>
         <div class="col-lg-4 margin-t-20">
           <div class="services-box text-center hover-effect">
-            <img src="@/assets/images/bunny/2.png" class="bunny">
-            <h4 class="padding-t-15">서핑</h4>
-            <p
-              class="padding-t-15 text-muted"
-            >서핑 소모임</p>
+            <img src="@/assets/images/hidden.png" class="bunny">
+            <h4 class="padding-t-15">함께 만들기</h4>
+            <!-- <p class="padding-t-15 text-muted">서핑 소모임</p> -->
           </div>
         </div>
       </div>

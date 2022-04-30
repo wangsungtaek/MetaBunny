@@ -40,7 +40,7 @@ export default {};
             <div class="team-box text-center hover-effect">
               <div class="team-wrapper">
                 <div class="team-member">
-                  <img alt src="@/assets/images/team/img_2.jpg" class="img-fluid rounded" />
+                  <img alt src="@/assets/images/bunny/19.png" class="img-fluid rounded" />
                 </div>
               </div>
               <h4 class="team-name">지영훈</h4>
@@ -54,7 +54,7 @@ export default {};
             <div class="team-box text-center hover-effect">
               <div class="team-wrapper">
                 <div class="team-member">
-                  <img alt src="@/assets/images/team/img_1.jpg" class="img-fluid rounded" />
+                  <img alt src="@/assets/images/bunny/15.png" class="img-fluid rounded" />
                 </div>
               </div>
               <h4 class="team-name">이한비</h4>
@@ -68,7 +68,7 @@ export default {};
             <div class="team-box text-center hover-effect">
               <div class="team-wrapper">
                 <div class="team-member">
-                  <img alt src="@/assets/images/team/img_3.jpg" class="img-fluid rounded" />
+                  <img alt src="@/assets/images/bunny/17.png" class="img-fluid rounded" />
                 </div>
               </div>
               <h4 class="team-name">왕성택</h4>

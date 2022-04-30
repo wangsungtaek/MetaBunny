@@ -26,7 +26,7 @@ export default {};
           </div>
           <div class="col-lg-7">
             <div class="features-img features-right text-right">
-              <img src="@/assets/images/bunny/20.png" alt="metakongz" class="img-fluid" id="bunny"/>
+              <img src="@/assets/images/bunny/19.png" alt="metakongz" class="img-fluid" id="bunny"/>
             </div>
           </div>
         </div>
