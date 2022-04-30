@@ -30,8 +30,8 @@ export default {};
         </div>
         <div class="col-lg-4 margin-t-20">
           <div class="services-box text-center hover-effect">
-            <img src="@/assets/images/bunny/2.png" class="bunny">
-            <h4 class="padding-t-15">서핑</h4>
+            <img src="@/assets/images/camping.png" class="bunny">
+            <h4 class="padding-t-15">캠핑</h4>
             <p
               class="padding-t-15 text-muted"
             >서핑 소모임</p>
@@ -39,8 +39,8 @@ export default {};
         </div>
         <div class="col-lg-4 margin-t-20">
           <div class="services-box text-center hover-effect">
-            <img src="@/assets/images/bunny/2.png" class="bunny">
-            <h4 class="padding-t-15">서핑</h4>
+            <img src="@/assets/images/fishing.png" class="bunny">
+            <h4 class="padding-t-15">낚시</h4>
             <p
               class="padding-t-15 text-muted"
             >서핑 소모임</p>
