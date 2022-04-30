@@ -10,11 +10,11 @@ export default {};
  
         <div class="row">
           <div class="col-lg-8 offset-lg-2">
-            <h1 class="section-title text-center">TEAM - 330FIVE</h1>
+            <h1 class="section-title text-center">TEAM</h1>
             <div class="section-title-border margin-t-20"></div>
             <p
               class="section-subtitle text-muted text-center font-secondary padding-t-30"
-            >안녕하세요 Meta Bunny 프로젝트 330 FIVE 입니다.<br>
+            >안녕하세요 Meta Bunny 프로젝트 팀 입니다.<br>
             저희 팀은 멋쟁이 사자처럼 1기에서 해커톤 우승을 한 이력이 있습니다.<br></p>
             
           </div>

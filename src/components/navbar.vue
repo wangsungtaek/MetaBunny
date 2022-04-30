@@ -36,7 +36,7 @@ export default {
   <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark" id="navbar">
     <div class="container">
       <!-- LOGO -->
-      <a class="navbar-brand logo text-uppercase" href="/">330 FIVE</a>
+      <a class="navbar-brand logo text-uppercase" href="/">META BUNNY</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -69,12 +69,21 @@ export default {
           <li class="nav-item">
             <a v-scroll-to="'#team'" href="javascript: void(0);" class="nav-link">팀</a>
           </li>
+          <li class="nav-item">
+            <a href="/minting" class="nav-link">민팅</a>
+          </li> 
+
         </ul>
         <div class="nav-button ml-auto">
           <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="https://discord.gg/zTQmTrtp" class="waves-light waves-effect margin-t-10">
                 <img src="@/assets/images/icon_discord.png" class="link">
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/metabunny0330" class="waves-light waves-effect margin-t-10">
+                <img src="@/assets/images/icon_twitter.png" class="link">
               </a>
             </li>
             <li>

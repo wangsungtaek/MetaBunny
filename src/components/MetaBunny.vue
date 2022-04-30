@@ -19,7 +19,7 @@ export default {};
               <ul class="text-muted list-unstyled margin-t-30 features-item-list">
                 <li class>우연히 버니랜드를 여행중인 꾸빼시를 만나게 된다.</li>
                 <li class>버니랜드 밖의 세상의 이야기를 듣게되어 용기를 내어본다.</li>
-                <li class>마침내! 메타버니는 꾸빼씨와 함께 비포로스트를 건너<br>
+                <li class>마침내! 메타버니는 꾸빼씨와 함께 버니랜드를<br>
                 행복찾기 여행을 시작한다.</li>
               </ul>
             </div>

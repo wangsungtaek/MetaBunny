@@ -21,7 +21,7 @@ export default {};
       <div class="row margin-t-30">
         <div class="col-lg-4 margin-t-20">
           <div class="services-box text-center hover-effect">
-            <img src="@/assets/images/bunny/2.png" class="bunny">
+            <img src="@/assets/images/surfing.png" class="bunny">
             <h4 class="padding-t-15">서핑</h4>
             <p
               class="padding-t-15 text-muted"
