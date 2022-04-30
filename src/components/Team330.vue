@@ -29,7 +29,7 @@ export default {};
                   <img alt src="@/assets/images/bunny/1.png" class="img-fluid rounded" />
                 </div>
               </div>
-              <h4 class="team-name">김주현</h4>
+              <h4 class="team-name">파파버니</h4>
               <p class="text-uppercase team-designation">팀 리닝<br>
               - 팀원별 모니터링<br>
               - 세계관, 유틸리티 정의 총괄</p>
@@ -43,7 +43,7 @@ export default {};
                   <img alt src="@/assets/images/bunny/19.png" class="img-fluid rounded" />
                 </div>
               </div>
-              <h4 class="team-name">지영훈</h4>
+              <h4 class="team-name">엉클버니</h4>
               <p class="text-uppercase team-designation">서포트<br>
               - 문서 작성<br>
               - 팀 리더 백업</p>
@@ -57,7 +57,7 @@ export default {};
                   <img alt src="@/assets/images/bunny/15.png" class="img-fluid rounded" />
                 </div>
               </div>
-              <h4 class="team-name">이한비</h4>
+              <h4 class="team-name">큐티버니</h4>
               <p class="text-uppercase team-designation">커뮤니케이터<br>
               - 팀 분위기 메이커<br>
               - 오픈채팅, 디스코드 관리 등</p>
@@ -71,7 +71,7 @@ export default {};
                   <img alt src="@/assets/images/bunny/17.png" class="img-fluid rounded" />
                 </div>
               </div>
-              <h4 class="team-name">왕성택</h4>
+              <h4 class="team-name">버니킹</h4>
               <p class="text-uppercase team-designation">개발 / 디자인<br>
               - 메타버니 창조
               - NFT 기술 구현<br>
