@@ -66,7 +66,7 @@ export default {};
             <div class="team-box text-center hover-effect">
               <div class="team-wrapper">
                 <div class="team-member">
-                  <img alt src="@/assets/images/bunny/5.png" class="img-fluid rounded" />
+                  <img alt src="@/assets/images/bunny/20.png" class="img-fluid rounded" />
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default {};
             <div class="team-box text-center hover-effect">
               <div class="team-wrapper">
                 <div class="team-member">
-                  <img alt src="@/assets/images/bunny/6.png" class="img-fluid rounded" />
+                  <img alt src="@/assets/images/bunny/25.png" class="img-fluid rounded" />
                 </div>
               </div>
             </div>

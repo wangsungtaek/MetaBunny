@@ -24,12 +24,12 @@ export default {
       setupSale: {
         mintIndexForSale: '',
         mintLimitPerBlock: '',
-        mintStartBlockNumber: '#0',
+        mintStartBlockNumber: '',
         maxSaleAmount: '',
-        mintPrice: '00'
+        mintPrice: ''
       },
 
-      blockNumber: 0,
+      blockNumber: '',
       blockCnt: false
 
     }
@@ -77,7 +77,7 @@ export default {
       this.setupSale.mintLimitPerBlock = parseInt(result[2]); // 트랙잭션당 최대 수량
       this.setupSale.mintStartBlockNumber = parseInt(result[4]); // 민팅 시작 블록
       this.setupSale.maxSaleAmount = parseInt(result[5]); // 최대 발행
-      this.setupSale.mintPrice = `${window.caver.utils.fromPeb(parseInt(result[6]), "KLAY")} KLAY` // 민팅 가격
+      this.setupSale.mintPrice = `${window.caver.utils.fromPeb(parseInt(result[6]), "KLAY")}` // 민팅 가격
       
 
       const blockNumber = await window.caver.klay.getBlockNumber();
@@ -103,10 +103,121 @@ export default {
     },
 
     plus() {
-      if(this.mintingNumber < this.setupSale.maxSaleAmount) {
+      if(this.mintingNumber < this.setupSale.mintLimitPerBlock) {
         this.mintingNumber += 1;
       }
+    },
+
+    // 민팅
+    async publicMint() {
+    if (window.klaytn.networkVersion === 8217) {
+        console.log("메인넷");
+    } else if (window.klaytn.networkVersion === 1001) {
+        console.log("테스트넷");
+    } else {
+        alert("ERROR: 클레이튼 네트워크로 연결되지 않았습니다!");
+        return;
     }
+    if (!this.isConnect) {
+        alert("ERROR: 지갑을 연결해주세요!");
+        return;
+    }
+
+    const myContract = new window.caver.klay.Contract(this.ABI, this.CONTRACTADDRESS);
+    const amount = this.mintingNumber;
+    await this.check_status();
+
+    if (this.setupSale.maxSaleAmount + 1 <= this.setupSale.mintIndexForSale) {
+        alert("모든 물량이 소진되었습니다.");
+        return;
+    } else if (this.blockNumber <= this.setupSale.mintStartBlockNumber) {
+        alert("아직 민팅이 시작되지 않았습니다.");
+        return;
+    }
+    const total_value = amount * this.setupSale.mintPrice;
+
+    // let estmated_gas;
+
+    console.log('myContract : ', myContract)
+    console.log('amount : ', amount)
+    console.log('this.setupSale.mintPrice : ', this.setupSale.mintPrice)
+    console.log(total_value)
+
+    if(amount <= 0) {
+      alert('민팅 수량을 입력해주세요.')
+      return
+    }
+
+    const accounts = await window.klaytn.enable();
+    const account = accounts[0];
+
+    console.log(account);
+    console.log(this.walletAdress);
+    
+    // 하고 싶은 일
+    // const transactionParameters = {
+    //   to: this.walletAdress,
+    //   from: account,
+    //   data: "0x2db115440000000000000000000000000000000000000000000000000000000000000001"
+    // };
+
+  // // 블록체인에 실제 물어보기
+  // window.klaytn.sendAsync({
+  //   method: "publicMint",
+  //   params: [transactionParameters, "latest"],
+  //   from: account
+  // },
+  //   (receipt, result) => {
+  //     console.log(result);
+  //   }
+  // );
+
+
+    const result = await myContract.methods.publicMint(amount)
+            .estimateGas({
+              from: account,
+              gas: 1000,
+              value: total_value
+            })
+    console.log(result)
+        // .estimateGas({
+        //     from: this.walletAdress,
+        //     gas: 6000000,
+        //     value: total_value
+        // })
+        // .then( (gasAmount) => {
+        //     console.log('gasAmount: ', gasAmount)
+        //     estmated_gas = gasAmount;
+        //     console.log("gas :" + estmated_gas);
+        //     myContract.methods.publicMint(amount)
+        //         .send({
+        //             from: this.walletAdress,
+        //             gas: estmated_gas,
+        //             value: total_value
+        //         })
+        //         .on("transactionHash", (txid) => {
+        //             console.log(txid);
+        //         })
+        //         .once("allEvents", (allEvents) => {
+        //             console.log(allEvents);
+        //         })
+        //         .once("Transfer", (transferEvent) => {
+        //             console.log(transferEvent);
+        //         })
+        //         .once("receipt", (receipt) => {
+        //             console.log(receipt)
+        //             alert("민팅에 성공하였습니다.");
+        //         })
+        //         .on("error", (error) => {
+        //             alert("민팅에 실패하였습니다.");
+        //             console.log(error);
+        //         });
+        // })
+        // .catch(function (error) {
+        //     console.log(error);
+        //     alert("민팅에 실패하였습니다.");
+        // });
+}
 
   }
 
@@ -129,62 +240,79 @@ export default {
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-lg-12">
-                <div class="card account-card">
-                  <div class="card-body">
+                <!-- <div class="card account-card">
+                  <div class="card-body"> -->
 
                     
                     <div class="text-center mt-3">
-                      <h3 class="font-weight-bold">
-                        <a href="/" class="text-dark text-uppercase account-pages-logo">META BUNNY</a>
-                      </h3>
-                      <p class="text-muted">Minting</p>
+                      <h1 class="font-weight-bold">
+                        <a href="/" class="text-white text-uppercase account-pages-logo">META BUNNY</a>
+                      </h1>
+                      <p class="text-white">Minting</p>
                     </div>
 
-                    <div class="row justify-content-center pt-5">
-                      <div class="col-lg-7 text-center">
-                        <img src="@/assets/images/bg-home.jpg" alt style="width: 400px">
+                    <div class="row justify-content-center align-content-center pt-5">
+
+                      <!-- image -->
+                      <div class="col-lg-6 align-content-center">
+                        <img src="@/assets/images/minting.png" alt style="width: 450px">
                       </div>
-                      <div class="col-lg-5">
-                        <div class="row">
-                          <div class="col-lg-12 title">
-                            Minting Block Number
-                          </div>
-                        </div>
-                        <div class="row mt-3">
-                          <div class="col-lg-6">
+
+                      <!-- Block -->
+                      <div class="col-lg-6 justfy-content-end">
+                        <div class="row align-content-center justify-content-center">
+                          <div class="col-lg-6 align-content-center justify-content-center">
                             CURRENT BLOCK
                           </div>
                           <h3 class="col-lg-6 font-weight-bold">
-                            #{{ blockNumber }}
+                            {{ `#${blockNumber}` }}
                           </h3>
                         </div>
 
                         <div class="row mt-2">
-                          <div class="col-lg-6">
+                          <div class="col-lg-6 align-content-center">
                             MINTING START AT
                           </div>
                           <h3 class="col-lg-6 font-weight-bold">
-                            #{{ setupSale.mintStartBlockNumber }}
+                            {{ `#${setupSale.mintStartBlockNumber}` }}
                           </h3>
                         </div>
 
-                        <div class="row mt-4">
-                          <div class="col-lg-4">
-                            <div class="title">Price</div>
-                            <img src="@/assets/images/klay.png" alt style="width: 18px;">
-                            {{ setupSale.mintPrice }}
+                        <div class="row mt-2">
+                          <div class="col-lg-6 align-content-center">
+                            PRICE
                           </div>
-                          <div class="col-log-4">
-                            <div class="title">Per Transaction</div>
-                            최대 <Strong>{{ setupSale.maxSaleAmount }}</Strong>
+                          <h3 class="col-lg-6 font-weight-bold">
+                            <!-- <img src="@/assets/images/klay.png" alt style="width: 20px;" id="klayLogo" class=""> -->
+                            {{ setupSale.mintPrice }} KLAY
+                          </h3>
+                        </div>
+
+                        <div class="row mt-2">
+                          <div class="col-lg-6 align-content-center">
+                            PER TRANSACTION
                           </div>
+                          <h3 class="col-lg-6 font-weight-bold">
+                            <!-- <img src="@/assets/images/klay.png" alt style="width: 20px;" id="klayLogo" class=""> -->
+                            {{ setupSale.mintLimitPerBlock }}
+                          </h3>
+                        </div>
+
+                        <div class="row mt-2">
+                          <div class="col-lg-6 align-content-center">
+                            판매수량
+                          </div>
+                          <h3 class="col-lg-6 font-weight-bold">
+                            <!-- <img src="@/assets/images/klay.png" alt style="width: 20px;" id="klayLogo" class=""> -->
+                            {{ setupSale.mintLimitPerBlock }}
+                          </h3>
                         </div>
 
                         <div class="row mt-5">
                           <div class="col-lg-10">
                           <h5 class="title">NFT 판매 수량</h5>
-                          <b-progress :max="max" height="2rem">
-                            <b-progress-bar :value="value">
+                          <b-progress :max="setupSale.maxSaleAmount" height="2rem">
+                            <b-progress-bar :value="setupSale.mintIndexForSale">
                               <span>판매수량: <strong>{{ setupSale.mintIndexForSale }} / {{ setupSale.maxSaleAmount }}</strong></span>
                             </b-progress-bar>
                           </b-progress>
@@ -211,15 +339,17 @@ export default {
 
                         <div class="row mt-1">
                           <div class="col-lg-10 text-center">
-                            <b-button variant="success" style="width: 100%">MINTING</b-button>
+                            <b-button variant="success" style="width: 100%" :disabled="!isConnect" @click="publicMint">
+                              MINTING
+                            </b-button>
                           </div>
                         </div>
 
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                <!-- </div>
+              </div> -->
               
             </div>
 
@@ -232,6 +362,13 @@ export default {
 </template>
 <style scoped>
 .title {
-  color: rgb(219, 125, 125);
+  color: white;
+}
+.bg-account-pages {
+  background: linear-gradient(#e66465, #9198e5);
+}
+#klayLogo {
+  position: absolute;
+  
 }
 </style>

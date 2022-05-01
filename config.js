@@ -1,4 +1,4 @@
-const CONTRACTADDRESS  = "0xEB17eAc4Cd78636757B0aE52a3d851cA483795D3";
+const CONTRACTADDRESS  = "0x33864a355fB2aC0a2f84b44266818F2eDf10Bff4";
 const ABI = [
 	{
 		"inputs": [
@@ -1077,6 +1077,7 @@ const ABI = [
 		"type": "function"
 	}
 ]
+
 
 
 export default { CONTRACTADDRESS, ABI }
