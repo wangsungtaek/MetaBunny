@@ -230,9 +230,16 @@ export default {
       <!-- <a href="/" class="text-white">
         <i class="mdi mdi-home h1"></i>
       </a> -->
-      <b-button v-if="!isConnect" variant="outline-white text-white" @click="connect">지갑연결</b-button>
-      <div v-if="isConnect" class="text-muted">{{ walletAdress }}</div>
-      <div v-if="isConnect" class="text-muted">{{ myKlay }}</div>
+      <div class="row justify-content-end">
+        <div class="col-lg-12">
+          <b-button v-if="!isConnect" variant="outline-white text-white font-weight-bold" @click="connect">지갑연결</b-button>
+          <div id="wallet" v-if="isConnect">
+            <img v-if="isConnect" src="@/assets/images/klay.png" alt style="width: 20px;" id="klayLogo" class="">
+            <span v-if="isConnect" class="text-white">{{ walletAdress }}</span>
+            <!-- <div v-if="isConnect" class="text-white">{{ myKlay }}</div> -->
+          </div>
+        </div>
+      </div>
     </div>
     <section class="bg-account-pages height-100vh">
       <div class="display-table">
@@ -260,8 +267,9 @@ export default {
 
                       <!-- Block -->
                       <div class="col-lg-6 justfy-content-end">
-                        <div class="row align-content-center justify-content-center">
-                          <div class="col-lg-6 align-content-center justify-content-center">
+
+                        <div class="row item">
+                          <div class="col-lg-6 align-content-center justify-content-center font-weight-bold pt-1">
                             CURRENT BLOCK
                           </div>
                           <h3 class="col-lg-6 font-weight-bold">
@@ -269,8 +277,8 @@ export default {
                           </h3>
                         </div>
 
-                        <div class="row mt-2">
-                          <div class="col-lg-6 align-content-center">
+                        <div class="row mt-2 item">
+                          <div class="col-lg-6 align-content-center font-weight-bold pt-1">
                             MINTING START AT
                           </div>
                           <h3 class="col-lg-6 font-weight-bold">
@@ -278,8 +286,8 @@ export default {
                           </h3>
                         </div>
 
-                        <div class="row mt-2">
-                          <div class="col-lg-6 align-content-center">
+                        <div class="row mt-2 item">
+                          <div class="col-lg-6 align-content-center font-weight-bold pt-1">
                             PRICE
                           </div>
                           <h3 class="col-lg-6 font-weight-bold">
@@ -288,8 +296,8 @@ export default {
                           </h3>
                         </div>
 
-                        <div class="row mt-2">
-                          <div class="col-lg-6 align-content-center">
+                        <div class="row mt-2 item">
+                          <div class="col-lg-6 align-content-center font-weight-bold pt-1">
                             PER TRANSACTION
                           </div>
                           <h3 class="col-lg-6 font-weight-bold">
@@ -298,48 +306,31 @@ export default {
                           </h3>
                         </div>
 
-                        <div class="row mt-2">
-                          <div class="col-lg-6 align-content-center">
+                        <div class="row mt-2 item">
+                          <div class="col-lg-6 align-content-center font-weight-bold pt-1">
                             판매수량
                           </div>
                           <h3 class="col-lg-6 font-weight-bold">
                             <!-- <img src="@/assets/images/klay.png" alt style="width: 20px;" id="klayLogo" class=""> -->
-                            {{ setupSale.mintLimitPerBlock }}
+                            {{ setupSale.mintIndexForSale }} / {{ setupSale.maxSaleAmount }}
                           </h3>
                         </div>
 
-                        <div class="row mt-5">
-                          <div class="col-lg-10">
-                          <h5 class="title">NFT 판매 수량</h5>
-                          <b-progress :max="setupSale.maxSaleAmount" height="2rem">
-                            <b-progress-bar :value="setupSale.mintIndexForSale">
-                              <span>판매수량: <strong>{{ setupSale.mintIndexForSale }} / {{ setupSale.maxSaleAmount }}</strong></span>
-                            </b-progress-bar>
-                          </b-progress>
-                          </div>
-                        </div>
-
-                        <div class="row mt-5">
-                          <div class="col-lg-12 title">
-                            Amount
-                          </div>
-                        </div>
-
-                        <div class="row mt-2">
+                        <div class="row amount align-items-center mb-4">
                           <div class="col-lg-2">
-                            <b-button @click="minus">-</b-button>
+                            <b-button variant="dark" @click="minus">-</b-button>
                           </div>
-                          <div class="col-lg-6">
-                            <b-form-input type="number" max="3" disabled v-model="mintingNumber" class="text-center font-weight-bold"></b-form-input>
+                          <div class="col-lg-6 text-center">
+                            <b-form-input type="number" max="3" disabled v-model="mintingNumber" class="text-center font-weight-bold mb-0" id="amountInput"></b-form-input>
                           </div>
-                          <div class="col-lg-2">
-                            <b-button @click="plus">+</b-button>
+                          <div class="col-lg-2 text-right">
+                            <b-button variant="dark" @click="plus">+</b-button>
                           </div>
                         </div>
 
                         <div class="row mt-1">
                           <div class="col-lg-10 text-center">
-                            <b-button variant="success" style="width: 100%" :disabled="!isConnect" @click="publicMint">
+                            <b-button variant="danger" style="width: 100%" :disabled="!isConnect" @click="publicMint">
                               MINTING
                             </b-button>
                           </div>
@@ -361,14 +352,39 @@ export default {
   </div>
 </template>
 <style scoped>
+#wallet {
+  width: 150px;
+  overflow: hidden;
+  border: 2px solid white;
+  border-radius: 18px;
+  height: 39px;
+}
+#wallet img {
+  width: 20px;
+  position: absolute;
+  top: 10px;
+  left: 25px;
+}
+#wallet span {
+  position: absolute;
+  top: 7px;
+  left: 53px;
+  width: 95px;
+  overflow: hidden;
+}
 .title {
   color: white;
 }
 .bg-account-pages {
   background: linear-gradient(#e66465, #9198e5);
 }
-#klayLogo {
-  position: absolute;
-  
+.amount {
+  margin-top: 90px;
+}
+.item {
+  height: 40px;
+}
+#amountInput {
+  font-size: 25px;
 }
 </style>
