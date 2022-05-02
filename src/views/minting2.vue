@@ -1,5 +1,4 @@
 <script>
-import config from '../../config.js'
 
 export default {
   name: "Minting",
@@ -9,7 +8,6 @@ export default {
 
   data() {
     return {
-      ...config,
       
       klaytn: '',
 
@@ -32,7 +30,7 @@ export default {
       },
 
       blockNumber: '',
-      blockCnt: false
+      blockCnt: false,
 
     }
   },
@@ -41,50 +39,21 @@ export default {
     
     // 지갑연동
     async connect() {
-        this.klaytn = window.klaytn;
-        const accounts = await window.klaytn.enable();
-        
-        if (window.klaytn.networkVersion === 8217) {
-            console.log("메인넷");
-        } else if (window.klaytn.networkVersion === 1001) {
-            console.log("테스트넷");
-        } else {
-            alert("ERROR: 클레이튼 네트워크로 연결되지 않았습니다!");
-            return;
-        }
-        this.isConnect = true;
-        
-        const account = accounts[0];
-        const balance = await window.caver.klay.getBalance(account)
-        this.walletAdress = account;
-        this.myKlay = `잔액: ${window.caver.utils.fromPeb(balance, "KLAY")} KLAY`
+      this.klaytn = window.klaytn;
+      const accounts = await this.klaytn.enable();
+      const account = accounts[0];
+      
+      if(account != null) {
+        this.walletAdress = account
+        this.isConnect = true
+      }
 
-            // .then(function (balance) {
-
-            //     self.walletAdress = `지갑주소: ${account}`
-            //     self.myKlay = `잔액: ${window.caver.utils.fromPeb(balance, "KLAY")} KLAY`
-            // });
-        this.check_status();
+      this.check_status()
     },
 
     // 트랜잭션 민팅 상태 확인
     async check_status() {
-
-      const myContract = new window.caver.klay.Contract(this.ABI, this.CONTRACTADDRESS);
-
-      const result = await myContract.methods.mintingInformation().call()
-      console.log(result);
       
-      this.setupSale.mintIndexForSale = parseInt(result[1]); // 민팅 시작 Index
-      this.setupSale.mintLimitPerBlock = parseInt(result[2]); // 트랙잭션당 최대 수량
-      this.setupSale.mintStartBlockNumber = parseInt(result[4]); // 민팅 시작 블록
-      this.setupSale.maxSaleAmount = parseInt(result[5]); // 최대 발행
-      this.setupSale.mintPrice = `${window.caver.utils.fromPeb(parseInt(result[6]), "KLAY")}` // 민팅 가격
-      
-
-      const blockNumber = await window.caver.klay.getBlockNumber();
-      this.blockNumber = blockNumber
-      this.cntBlockNumber();
     },
 
     // BlockCount
@@ -112,115 +81,30 @@ export default {
 
     // 민팅
     async publicMint() {
-    if (window.klaytn.networkVersion === 8217) {
-        console.log("메인넷");
-    } else if (window.klaytn.networkVersion === 1001) {
-        console.log("테스트넷");
-    } else {
-        alert("ERROR: 클레이튼 네트워크로 연결되지 않았습니다!");
-        return;
-    }
-    if (!this.isConnect) {
-        alert("ERROR: 지갑을 연결해주세요!");
-        return;
-    }
+      
+      const transactionParameters = {
+        to: "0x1aA4a2315fa73328c0873E04060FF8F640413A29",
+        from: this.walletAdress,
+        data: "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+        value: "0xB1A2BC2EC50000", // 0.05 Klay
+        gas: "0x3476A",
+      };
 
-    const myContract = new window.caver.klay.Contract(this.ABI, this.CONTRACTADDRESS);
-    const amount = this.mintingNumber;
-    await this.check_status();
-
-    if (this.setupSale.maxSaleAmount + 1 <= this.setupSale.mintIndexForSale) {
-        alert("모든 물량이 소진되었습니다.");
-        return;
-    } else if (this.blockNumber <= this.setupSale.mintStartBlockNumber) {
-        alert("아직 민팅이 시작되지 않았습니다.");
-        return;
-    }
-    const total_value = amount * this.setupSale.mintPrice;
-
-    // let estmated_gas;
-
-    console.log('myContract : ', myContract)
-    console.log('amount : ', amount)
-    console.log('this.setupSale.mintPrice : ', this.setupSale.mintPrice)
-    console.log(total_value)
-
-    if(amount <= 0) {
-      alert('민팅 수량을 입력해주세요.')
-      return
-    }
-
-    const accounts = await window.klaytn.enable();
-    const account = accounts[0];
-
-    console.log(account);
-    console.log(this.walletAdress);
-
-    const transactionParameters = {
-      to: "0x33864a355fB2aC0a2f84b44266818F2eDf10Bff4",
-      from: this.walletAdress,
-      data: "0x2db115440000000000000000000000000000000000000000000000000000000000000001",
-      value: "0x0", // 1 Klay
-      // 0xDE0B6B3A7640000
-      gas: "0x396A5",
-    };
-
-    this.klaytn.sendAsync(
-      {
-        method: "klay_sendTransaction",
-        params: [transactionParameters],
-        from: account
-      },
-      (receipt, result) => {
-        console.log(receipt);
-        console.log(result);
-        if(result.result) {
-          alert('민팅에 성공하였습니다.')
-          this.check_status()
-        } else {
-          alert('민팅이 취소되었습니다.')
+      // 하고 싶은 일 블록체인에 요청하기
+      this.klaytn.sendAsync(
+        {
+          method: "klay_sendTransaction",
+          params: [transactionParameters],
+          from: this.account
+        },
+        (receipt, result) => {
+          console.log(receipt);
+          console.log(result);
         }
-      }
-    );
-    // await myContract.methods.publicMint(1)
-    //         .estimateGas({
-    //           from: account,
-    //           gas: 3000000,
-    //           value: total_value
-    //         })
-        // .then( (gasAmount) => {
-        //     console.log('gasAmount: ', gasAmount)
-        //     estmated_gas = gasAmount;
-        //     console.log("gas :" + estmated_gas);
-        //     myContract.methods.publicMint(amount)
-        //         .send({
-        //             from: this.walletAdress,
-        //             gas: estmated_gas,
-        //             value: total_value
-        //         })
-        //         .on("transactionHash", (txid) => {
-        //             console.log(txid);
-        //         })
-        //         .once("allEvents", (allEvents) => {
-        //             console.log(allEvents);
-        //         })
-        //         .once("Transfer", (transferEvent) => {
-        //             console.log(transferEvent);
-        //         })
-        //         .once("receipt", (receipt) => {
-        //             console.log(receipt)
-        //             alert("민팅에 성공하였습니다.");
-        //         })
-        //         .on("error", (error) => {
-        //             alert("민팅에 실패하였습니다.");
-        //             console.log(error);
-        //         });
-        // })
-        // .catch(function (error) {
-        //     console.log(error);
-        //     alert("민팅에 실패하였습니다.");
-        // });
-}
+      );
+
+  
+    }   
 
   }
 
