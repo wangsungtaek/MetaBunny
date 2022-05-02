@@ -157,7 +157,7 @@ export default {
     console.log(this.walletAdress);
 
     const transactionParameters = {
-      to: "0x33864a355fB2aC0a2f84b44266818F2eDf10Bff4",
+      to: "0x46D94245Ddb86082A464C1B1349B3A075F5C369B",
       from: this.walletAdress,
       data: "0x2db115440000000000000000000000000000000000000000000000000000000000000001",
       value: "0x0", // 1 Klay

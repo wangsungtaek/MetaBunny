@@ -15,11 +15,6 @@ const routes = [
     component: () => import('../views/minting.vue')
   },
   {
-    path: '/minting2',
-    name: 'minting2',
-    component: () => import('../views/minting2.vue')
-  },
-  {
     path: '/home-3',
     name: 'Index-3',
     component: () => import('../views/index3.vue')
