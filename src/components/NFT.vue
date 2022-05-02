@@ -16,7 +16,7 @@ export default {};
             >귀여운 메타버니와 함께 하세요.</p>
             <div class="text-center">
             <a
-              href="javascript: void(0);"
+              href="https://opensea.io/collection/meta-bunny-v0"
               class="btn btn-custom waves-light waves-effect margin-t-10"
             >
               GO OPENSEA
