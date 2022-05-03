@@ -5,7 +5,7 @@ export default {};
 <template>
   <div>
     <!--START TESTIMONIAL-->
-    <section class="section pt-4" id="team">
+    <section class="section pt-4 bg-light" id="team">
       <div class="container">
  
         <div class="row">
