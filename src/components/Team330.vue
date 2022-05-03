@@ -73,9 +73,8 @@ export default {};
               </div>
               <h4 class="team-name">버니킹</h4>
               <p class="text-uppercase team-designation">개발 / 디자인<br>
-              - 메타버니 창조
-              - NFT 기술 구현<br>
-              - 홈페이지 구축</p>
+              - 메타버니 창조<br>
+              - NFT 기술 구현, 홈페이지 구축</p>
             </div>
           </div>
 

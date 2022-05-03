@@ -13,14 +13,14 @@ export default {};
               <h3>버니랜드 "메타버니"</h3>
               <p
                 class="text-muted web-desc"
-              >안정화된 시스템으로 정해진 규칙이 강요되는 버니랜드에서 살고있는 메타버니<br>
-              아무것도 할 수 없는 버니랜드가 답답하고 무료한 메타버니.. <br>
-              매번 두려워 비포로스트를 벗어나지못한다.</p>
+              >안정화된 시스템으로 정해진 규칙이 강요되는 미드가르드에 살고 있는 메타 버니<br>
+              아무것도 할 수 없는 미드가르드에서의 <strong>삶이 답답하고 무료한 메타 버니</strong><br>
+              매번 두려워 미드가르드를 벗어나지 못한다.</p>
               <ul class="text-muted list-unstyled margin-t-30 features-item-list">
-                <li class>우연히 버니랜드를 여행중인 꾸빼시를 만나게 된다.</li>
-                <li class>버니랜드 밖의 세상의 이야기를 듣게되어 용기를 내어본다.</li>
-                <li class>마침내! 메타버니는 꾸빼씨와 함께 버니랜드를<br>
-                행복찾기 여행을 시작한다.</li>
+                <li class>매일 밤 미드가르드를 벗어나는 꿈을 꾼다.</li>
+                <li class>우연히 여행 중인 꾸빼씨를 만나게 되고,</li>
+                <li class>미드가르드 밖의 세상의 이야기를 듣게 되어 용기를 내어본다.</li>
+                <li class>용기를 낸 메타 버니는 미드가르드를 벗어나 <strong>버니 랜드로 향한다.</strong></li>
               </ul>
             </div>
           </div>
@@ -39,5 +39,8 @@ export default {};
 #bunny {
   border-radius: 20px;
   width: 300px;
+}
+strong {
+  color: rgb(200, 128, 128);
 }
 </style>

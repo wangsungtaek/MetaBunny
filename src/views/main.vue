@@ -9,6 +9,7 @@ import BucketList from '@/components/BucketList.vue';
 import NFT from '@/components/NFT.vue';
 import RoadMap from '@/components/RoadMap.vue';
 import Team330 from '@/components/Team330.vue';
+import benefits from '../components/benefits.vue';
 
 
 export default {
@@ -21,7 +22,8 @@ export default {
     BucketList,
     NFT,
     RoadMap,
-    Team330
+    Team330,
+    benefits
   },
 };
 </script>
@@ -42,7 +44,7 @@ export default {
             <div class="container">
               <div class="row">
                 <div class="col-lg-8 offset-lg-2 text-white text-center">
-                  <h1 class="home-title">버니랜드에 오신걸 환영합니다.</h1>
+                  <h1 class="home-title">진짜 행복이란 무엇일까 ?</h1>
                   <p
                     class="padding-t-15 home-desc"
                   >행복은 성장하는데 찾아옵니다. META BUNNY와 함께 버니랜드로 떠나보세요!</p>
@@ -78,6 +80,7 @@ export default {
       <BucketList />
       <NFT />
       <RoadMap />
+      <benefits />
       <Team330 />
       <Footer />
     </div>

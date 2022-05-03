@@ -14,11 +14,11 @@ export default {};
               <p
                 class="text-muted web-desc"
               >힘들어하는 콩즈들을 상담하던 중 문득 "진짜 행복이란 무엇일까 ?"<br>
-               라는 물음을 갖게 되었고, 진짜 행복을 찾아 여행을 떠나게 된다.</p>
+               라는 물음을 갖게 되었고, <strong>진짜 행복을 찾아 여행</strong>을 떠나게 된다.</p>
               <ul class="text-muted list-unstyled margin-t-30 features-item-list">
-                <li class>여행 도중 버니 랜드를 발견하게 된다.</li>
-                <li class>버니 랜드 안에 메타 버니들은 세상 밖으로 나가고 싶어 하였다.</li>
-                <li class>메타 버니와 꾸빼씨는 브포로스트 밖으로 나가<br> 새로운 경험을 함께 시작한다.</li>
+                <li class>여행 중 미드가르드에 살고있는 메타버니를 발견하게 되었고,</li>
+                <li class>꿈만 꾸고 도전하지 못하는 메타 버니들을 위해 상담을 진행한다.</li>
+                <li class>그렇게 메타 버니를 버니 랜드 세상으로 안내하게 된다.</li>
               </ul>
             </div>
           </div>
@@ -37,5 +37,8 @@ export default {};
 #kkuppae {
   border-radius: 20px;
   width: 300px;
+}
+strong {
+  color: rgb(200, 128, 128);
 }
 </style>

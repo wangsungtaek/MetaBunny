@@ -16,6 +16,14 @@ export default {};
         </div>
       </div>
       
+      <!-- img -->
+      <div class="row margin-t-50">
+        <div class="col-lg-12 hover-effect">
+            <img src="@/assets/images/RoadMap.png" id="roadMapImg"/>
+        </div>
+      </div>
+
+
       <!-- 1 ROW -->
       <div class="row margin-t-50">
         <div class="col-lg-3">
@@ -254,5 +262,9 @@ export default {};
 }
 .pricing-box h4 {
   height: 30px;
+}
+#roadMapImg {
+  width: 100%;
+  border-radius: 10px;
 }
 </style>
